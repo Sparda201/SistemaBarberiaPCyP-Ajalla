@@ -12,7 +12,7 @@ public class Main extends Thread {
         Barberia barberia = new Barberia(sillas, semaphoreBarberia);
         List<Cliente> clientes = new ArrayList<>();
         //Intancia cada Cliente
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             Cliente cliente = new Cliente(barberia);
             clientes.add(cliente);
         }
@@ -20,22 +20,22 @@ public class Main extends Thread {
         //Primero manda 7 Clientes y luego de 8seg manda otros 3 Clientes
         for (int i = 0; i < clientes.size(); i++) {
             if (i == 7) {
-                sleep(8000);
+                sleep(15000);
             }
             clientes.get(i).start();
         }
 
 
-        // Manda 5 Clientes uno por uno cada cierto tiempo
+        /*// Manda 5 Clientes uno por uno cada cierto tiempo
         for (int i = 0; i < 5; i++) {
             Cliente cliente = new Cliente(barberia);
             cliente.start();
             int num = (int) (Math.random() * (3000 - 1000)) + 1000;
             sleep(num);
         
-        }
+        }*/
 
-        while (!cerrarBarberia) {
+        /*while (!cerrarBarberia) {
             //System.out.println(barberia.getSemaphoreBarberia().availablePermits());
             //System.out.println("1");
             //System.out.println(barberia.getBarbero().isDurmiendo()+" "+barberia.getBarbero2().isDurmiendo());
@@ -45,6 +45,6 @@ public class Main extends Thread {
                 barberia.getBarbero().getSemaphorBarbero().release();
                 barberia.getBarbero2().getSemaphorBarbero().release();
             }     
-        }
+        }*/
     }
 }
