@@ -9,26 +9,27 @@ public class Barbero extends Thread{
     private int id;
     private Sillon sillon;
 
+    /*El contructor recibira los siguientes parametros desde la barberia */
     public Barbero(int id, Barberia barberia, Sillon sillon){
         durmiendo = true;
         this.barberia = barberia;
         this.id = id;
         this.sillon = sillon;
-        semaphoreBarbero = new Semaphore(0, true);
+        semaphoreBarbero = new Semaphore(0, true);//semaforo cerrado que incializa en 0 con politica FIFO
     }
 
     @Override
     public void run() {
-        boolean band = false;
+        boolean band = false;//boleano que sirve para terminar el bucle del barbero asi terminar su proceso
         try {
-            while (band == false) {
+            while (band == false) {//bucle para que el barbero siempre este ejecutandose
                 semaphoreBarbero.acquire();// pide un permiso para iniciar con el corte, espera la senial del Cliente para continuar
-                if (!Main.cerrarBarberia) {
+                if (!Main.cerrarBarberia) {//si la barberia no cerro continuara con sus tareas
                     sleep(200);
                     cortarPelo(sillon.getCliente().getId());//corta el pelo
                     sillon.getCliente().getSemaphoreEstado().release(); //notifica al cliente que termino el corte 
                     dormir(); 
-                }else{
+                }else{// si la barberia cerro entonces terminar el proceso del barbero
                     band = true;
                 }
 

@@ -10,11 +10,12 @@ public class Cliente extends Thread{
     private final Semaphore semaphoreEstado; //semaforo de condicion que controla la espera del cliente cuando le estan por cortar el pelo
     private Sillon sillon; // representa al sillon que usara el cliente
     
+    /*constructor que que recibe los siguientes parametros desde el main */
     public Cliente(Barberia barberia){
        id = idNext;
-       idNext++; 
+       idNext++; //se incrementa el id para el proximo cliente
        this.barberia = barberia;
-       semaphoreEstado = new Semaphore(0, true);
+       semaphoreEstado = new Semaphore(0, true);//semaforo cerrado que inicializa en 0 con politica FIFO
     }
 
 

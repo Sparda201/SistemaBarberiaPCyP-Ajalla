@@ -14,7 +14,7 @@ public class Barberia extends Thread{
     private final Semaphore semaphoreBarberia; //Semaforo de la Barberia que controla los asientos
     private final Semaphore semaphoreAsignarBarbero; //Semaforo que controla que solo un cliente pueda pedir turno a la vez
 
-
+    /*constructor que que recibe los siguientes parametros desde el main */
     public Barberia(int sillas, Semaphore semaphoreBarberia){
         this.sillas = sillas;
         this.semaphoreBarberia = semaphoreBarberia;

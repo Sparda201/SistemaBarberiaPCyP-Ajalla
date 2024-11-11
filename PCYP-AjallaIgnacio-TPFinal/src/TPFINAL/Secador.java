@@ -7,8 +7,9 @@ public class Secador extends Thread{
     private final Semaphore semaphoreSecador;// semaforo que controlara el uso del secador
     private Barberia barberia; // representa la barberia
 
+    /*Constructor que que recibe los siguientes parametros desde la barberia */
     public Secador(Barberia barberia){
-        semaphoreSecador = new Semaphore(1, true);
+        semaphoreSecador = new Semaphore(1, true);//semaforo que iniciara en 1 con politica FIFO
         this.barberia = barberia;
     }
 

@@ -6,7 +6,7 @@ public class Impresora extends Thread{
     private final Semaphore semaphoreImpresora; //Semaforo que controla el uso de la impresora o la impresion de los msjs
 
     public Impresora(){
-        semaphoreImpresora = new Semaphore(1, true);
+        semaphoreImpresora = new Semaphore(1, true);//semaforo que inicializara en 1 con politica FIFO
 
     }
 
